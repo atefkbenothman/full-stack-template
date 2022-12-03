@@ -38,8 +38,20 @@ services:
     ports:
       - "8000:8000"
 
+  grafana:
+    container_name: grafana
+    build:
+      context: ./grafana
+      dockerfile: Dockerfile
+    volumes:
+      - ./grafana:/etc/grafana
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "9000:3000"
+
 networks:
   web:
 
 volumes:
   exclude:
+  grafana-data:
