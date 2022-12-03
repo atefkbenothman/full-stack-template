@@ -24,6 +24,21 @@ services:
       - web
     command: uvicorn app.main:app --host 0.0.0.0 --port 3001
 
+  grafana:
+    container_name: grafana
+    build:
+      context: ./grafana
+      dockerfile: Dockerfile
+    volumes:
+      - ./grafana:/etc/grafana
+      - grafana-data:/var/lib/grafana
+    networks:
+      - web
+    ports:
+      - "9000:3000"
+    command: yarn start
+
+
   proxy:
     container_name: proxy
     build:
@@ -33,21 +48,11 @@ services:
     networks:
       - web
     depends_on:
+      - grafana
       - backend
       - frontend
     ports:
       - "8000:8000"
-
-  grafana:
-    container_name: grafana
-    build:
-      context: ./grafana
-      dockerfile: Dockerfile
-    volumes:
-      - ./grafana:/etc/grafana
-      - grafana-data:/var/lib/grafana
-    ports:
-      - "9000:3000"
 
 networks:
   web:
