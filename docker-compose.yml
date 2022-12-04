@@ -22,7 +22,24 @@ services:
       - ./backend/app:/code/app
     networks:
       - web
+    ports:
+      - "3002:3002"
     command: uvicorn app.main:app --host 0.0.0.0 --port 3001
+
+  prometheus:
+    container_name: prometheus
+    build:
+      context: ./prometheus
+      dockerfile: Dockerfile
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - prometheus-data:/prometheus
+    networks:
+      - web
+    ports:
+      - "9090:9090"
+    depends_on:
+      - backend
 
   grafana:
     container_name: grafana
@@ -38,7 +55,6 @@ services:
       - "9000:3000"
     command: yarn start
 
-
   proxy:
     container_name: proxy
     build:
@@ -48,6 +64,7 @@ services:
     networks:
       - web
     depends_on:
+      - prometheus
       - grafana
       - backend
       - frontend
@@ -60,3 +77,4 @@ networks:
 volumes:
   exclude:
   grafana-data:
+  prometheus-data:
