@@ -4,7 +4,7 @@ a full stack web application template, containerized using docker.
 
 <br>
 
-### Technologies
+### technologies
 - react
 - fastapi
 - nginx reverse proxy
@@ -13,7 +13,7 @@ a full stack web application template, containerized using docker.
 
 <br>
 
-### Endpoints
+### endpoints
 frontend
 - `http://localhost:8000/`
 
