@@ -4,7 +4,7 @@ a full stack web application template, containerized using docker.
 
 <br>
 
-## Technologies
+### Technologies
 - react
 - fastapi
 - nginx reverse proxy
@@ -13,15 +13,15 @@ a full stack web application template, containerized using docker.
 
 <br>
 
-## Endpoints
+### Endpoints
 frontend
-- http://localhost:8000/
+- `http://localhost:8000/`
 
 backend
-- http://localhost:8000/api/
-- http://localhost:8000/api/test
-- http://localhost:8000/api/metrics
+- `http://localhost:8000/api/`
+- `http://localhost:8000/api/test`
+- `http://localhost:8000/api/metrics`
 
 metrics
-- http://localhost:8000/grafana/ 
-- http://localhost:9090/
+- `http://localhost:8000/grafana/`
+- `http://localhost:9090/`
