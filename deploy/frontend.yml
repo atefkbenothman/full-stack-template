@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+
+kind: Deployment
+metadata:
+  name: full-stack-template-frontend
+  namespace: full-stack-template
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: full-stack-template-frontend
+  template:
+    metadata:
+      labels:
+        app: full-stack-template-frontend
+    spec:
+      containers:
+        - name: full-stack-template-frontend
+          imagePullPolicy: IfNotPresent
+          image: atefkbenothman/full-stack-template-frontend:0.2
+          env:
+          - name: PING
+            value: PONG
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+
+---
+apiVersion: v1
+
+kind: Service
+metadata:
+  name: full-stack-template-frontend
+  namespace: full-stack-template
+spec:
+  selector:
+    app: full-stack-template-frontend
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000

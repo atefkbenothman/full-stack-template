@@ -11,6 +11,8 @@ services:
       - exclude:/code/app/node_modules
     networks:
       - web
+    ports:
+      - "3000:3000"
     command: yarn start
 
   backend:

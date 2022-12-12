@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  backend:
+    image: atefkbenothman/full-stack-template-backend:0.1
+    build:
+      context: backend
+      dockerfile: Dockerfile
+
+  frontend:
+    image: atefkbenothman/full-stack-template-frontend:0.2
+    build:
+      context: frontend
+      dockerfile: Dockerfile
