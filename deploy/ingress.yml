@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+
+kind: Ingress
+metadata:
+  name: full-stack-template-ingress
+  namespace: full-stack-template
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/proxy-body-size: 16m
+spec:
+  tls:
+  - hosts:
+      - localhost
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /frontend
+        pathType: Prefix
+        backend:
+          service:
+            name: full-stack-template-frontend
+            port:
+              number: 80
+      # - path: /frontend/static
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: full-stack-template-frontend
+      #       port:
+      #         number: 80
+      - path: /static
+        pathType: Prefix
+        backend:
+          service:
+            name: full-stack-template-frontend
+            port:
+              number: 80
