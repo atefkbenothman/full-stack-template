@@ -22,13 +22,6 @@ spec:
             name: full-stack-template-frontend
             port:
               number: 80
-      # - path: /frontend/static
-      #   pathType: Prefix
-      #   backend:
-      #     service:
-      #       name: full-stack-template-frontend
-      #       port:
-      #         number: 80
       - path: /static
         pathType: Prefix
         backend:
